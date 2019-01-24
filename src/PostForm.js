@@ -14,7 +14,6 @@ class PostForm extends Component {
   }
 
   componentDidMount() {
-    console.log('insde component DID UPDATE');
     if (this.props.post) {
       this.setState({
         title: this.props.post.title,
@@ -26,8 +25,6 @@ class PostForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log(`inside the handle submit.....`, this.props);
-    // do submit stuff here
     this.props.post
       ? this.props.editPost(this.state, this.props.post.id)
       : this.props.addPost(this.state);

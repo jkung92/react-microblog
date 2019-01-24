@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PostForm from './PostForm';
+import CommentsSection from './CommentsSection';
 
 class Post extends Component {
   constructor(props) {
@@ -23,31 +24,37 @@ class Post extends Component {
     let post = this.props.posts.find(p => p.id === id);
     if (!post) return <Redirect to="/" />;
 
+    // can destructure to clean up this.props
+
     return (
       <div>
         {this.state.editView ? (
           <PostForm post={post} editPost={this.props.editPost} />
         ) : (
-          <div>
-            <span>
-              <h4 style={{ display: 'inline-block justify-content-center' }}>
-                {post.title}
-              </h4>
-              <i
-                className="far fa-trash-alt float-right m-1"
-                style={{ color: 'green' }}
-                onClick={this.remove}
-              />
-              <i
-                className="fas fa-edit float-right m-1"
-                style={{ color: 'dodgerblue' }}
-                onClick={this.handleEdit}
-              />
-            </span>
-            <p>{post.description}</p>
-            <p>{post.body}</p>
+          <div className="media">
+            <div className="media-body">
+              <h4 className="mt-0 mb-1">{post.title}</h4>
+              <h6>{post.description}</h6>
+              <p> {post.body} </p>
+            </div>
+            <i
+              className="far fa-trash-alt float-right m-1 align-self-center"
+              style={{ color: 'red' }}
+              onClick={this.remove}
+            />
+            <i
+              className="fas fa-edit float-right m-1 align-self-center"
+              style={{ color: 'dodgerblue' }}
+              onClick={this.handleEdit}
+            />
           </div>
         )}
+        <CommentsSection
+          post={post}
+          comments={this.props.comments}
+          addComment={this.props.addComment}
+          deleteComment={this.props.deleteComment}
+        />
       </div>
     );
   }

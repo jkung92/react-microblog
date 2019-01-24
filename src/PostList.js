@@ -4,7 +4,7 @@ import PostCard from './PostCard';
 class PostList extends Component {
   render() {
     return (
-      <div>
+      <div className="d-flex d-inline-block justify-content-center">
         {this.props.posts.map(p => (
           <PostCard
             id={p.id}

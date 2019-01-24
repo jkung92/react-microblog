@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 
 class PostCard extends Component {
   render() {
+    const { id, body, title, description } = this.props;
     return (
-      <Link to={`/${this.props.id}`} body={this.props.body}>
-        <h4>{this.props.title}</h4>
-        <p>{this.props.description}</p>
-      </Link>
+      <div>
+        <Link to={`/${id}`} body={body}>
+          <div className="card m-3 bg-light" style={{ width: '18rem' }}>
+            <div className="card-body">
+              <h5 className="card-title">{title}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">{description}</h6>
+            </div>
+          </div>
+        </Link>
+      </div>
     );
   }
 }

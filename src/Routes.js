@@ -6,23 +6,25 @@ import Post from './Post';
 
 class Routes extends Component {
   render() {
+    const {
+      posts,
+      addPost,
+      editPost,
+      deletePost,
+      addComment,
+      deleteComment,
+      comments
+    } = this.props;
+
     return (
       <div>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <Home posts={this.props.posts} />}
-          />
+          <Route exact path="/" render={() => <Home posts={posts} />} />
           <Route
             exact
             path="/new"
             render={props => (
-              <PostForm
-                addPost={this.props.addPost}
-                editPost={this.props.editPost}
-                {...props}
-              />
+              <PostForm addPost={addPost} editPost={editPost} {...props} />
             )}
           />
           <Route
@@ -30,10 +32,13 @@ class Routes extends Component {
             path="/:postId"
             render={props => (
               <Post
-                editPost={this.props.editPost}
-                deletePost={this.props.deletePost}
+                editPost={editPost}
+                deletePost={deletePost}
+                addComment={addComment}
+                deleteComment={deleteComment}
                 {...props}
-                posts={this.props.posts}
+                posts={posts}
+                comments={comments}
               />
             )}
           />

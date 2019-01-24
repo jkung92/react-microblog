@@ -5,7 +5,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Home Page with all blog posts</h1>
+        <p>
+          Welcome to Microblog, our innovative site for communicating on the
+          information superhighway.
+        </p>
         <PostList posts={this.props.posts} />
       </div>
     );
