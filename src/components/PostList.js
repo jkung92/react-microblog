@@ -3,15 +3,16 @@ import PostCard from './PostCard';
 
 class PostList extends Component {
   render() {
+    const { blogPosts } = this.props;
     return (
       <div className="d-flex d-inline-block justify-content-center">
-        {this.props.posts.map(p => (
+        {Object.keys(blogPosts).map(id => (
           <PostCard
-            id={p.id}
-            title={p.title}
-            description={p.description}
-            body={p.body}
-            key={p.id}
+            id={id}
+            title={blogPosts.id.title}
+            description={blogPosts.id.description}
+            body={blogPosts.id.body}
+            key={id}
           />
         ))}
       </div>

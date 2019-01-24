@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import PostForm from './PostForm';
 import CommentsSection from './CommentsSection';
 
-class Post extends Component {
+class PostDetail extends Component {
   constructor(props) {
     super(props);
     this.state = { editView: false };
@@ -60,4 +60,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default PostDetail;

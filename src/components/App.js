@@ -8,21 +8,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
+      // posts: [],
       comments: []
     };
-    this.addPost = this.addPost.bind(this);
+    // this.addPost = this.addPost.bind(this);
     this.editPost = this.editPost.bind(this);
     this.deletePost = this.deletePost.bind(this);
     this.addComment = this.addComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
   }
 
-  addPost(post) {
-    let id = uuid();
-    let newPost = { ...post, id };
-    this.setState(currState => ({ posts: [...currState.posts, newPost] }));
-  }
+  // addPost(post) {
+  //   let id = uuid();
+  //   let newPost = { ...post, id };
+  //   this.setState(currState => ({ posts: [...currState.posts, newPost] }));
+  // }
 
   addComment(comment, postId) {
     let commentId = uuid();
@@ -65,7 +65,7 @@ class App extends Component {
       <div className="App container">
         <NavBar />
         <Routes
-          addPost={this.addPost}
+          // addPost={this.addPost}
           editPost={this.editPost}
           deletePost={this.deletePost}
           deleteComment={this.deleteComment}

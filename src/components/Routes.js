@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import PostForm from './PostForm';
-import Post from './Post';
+import PostDetail from './PostDetail';
 
 class Routes extends Component {
   render() {
@@ -31,7 +31,7 @@ class Routes extends Component {
             exact
             path="/:postId"
             render={props => (
-              <Post
+              <PostDetail
                 editPost={editPost}
                 deletePost={deletePost}
                 addComment={addComment}
