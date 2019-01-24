@@ -15,17 +15,18 @@ export function addPost(post) {
   };
 }
 
-export function deletePost(post) {
+export function deletePost(id) {
   return {
     type: DELETE_POST,
-    post
+    id
   };
 }
 
-export function editPost(post) {
+export function editPost(post, id) {
   return {
     type: EDIT_POST,
-    post
+    post,
+    id
   };
 }
 

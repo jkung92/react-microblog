@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import PostForm from './PostForm';
-import PostDetail from './PostDetail';
+import NewPostFormContainer from '../containers/NewPostFormContainer';
+import PostDetailContainer from '../containers/PostDetailContainer';
 
 class Routes extends Component {
   render() {
@@ -24,20 +24,22 @@ class Routes extends Component {
             exact
             path="/new"
             render={props => (
-              <PostForm addPost={addPost} editPost={editPost} {...props} />
+              <NewPostFormContainer
+                // addPost={addPost}
+                editPost={editPost}
+                {...props}
+              />
             )}
           />
           <Route
             exact
             path="/:postId"
             render={props => (
-              <PostDetail
-                editPost={editPost}
-                deletePost={deletePost}
-                addComment={addComment}
-                deleteComment={deleteComment}
+              <PostDetailContainer
+                // addComment={addComment}
+                // deleteComment={deleteComment}
                 {...props}
-                posts={posts}
+                // posts={posts}
                 comments={comments}
               />
             )}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PostForm from './PostForm';
-import CommentsSection from './CommentsSection';
+import CommentSectionContainer from '../containers/CommentSectionContainer';
 
 class PostDetail extends Component {
   constructor(props) {
@@ -21,15 +21,24 @@ class PostDetail extends Component {
   render() {
     // get the id of the and find the post in the posts array
     const id = this.props.match.params.postId;
-    let post = this.props.posts.find(p => p.id === id);
+    console.log(`Inside PostDetail`, this.props);
+    let post = this.props.blogPosts[id];
+
+    // let post = this.props.blogPosts.find(p => p.id === id);
     if (!post) return <Redirect to="/" />;
 
     // can destructure to clean up this.props
 
+    console.log(`inside postdetail -----`, this.props);
     return (
       <div>
         {this.state.editView ? (
-          <PostForm post={post} editPost={this.props.editPost} />
+          <PostForm
+            post={post}
+            id={id}
+            // addPost={this.props.addPost}
+            editPost={this.props.editPost}
+          />
         ) : (
           <div className="media">
             <div className="media-body">
@@ -49,9 +58,8 @@ class PostDetail extends Component {
             />
           </div>
         )}
-        <CommentsSection
+        <CommentSectionContainer
           post={post}
-          comments={this.props.comments}
           addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
         />

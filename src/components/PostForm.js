@@ -7,27 +7,28 @@ class PostForm extends Component {
     this.state = {
       title: '',
       description: '',
-      body: ''
+      body: '',
+      comments: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    // if (this.props.post) {
-    //   this.setState({
-    //     title: this.props.post.title,
-    //     description: this.props.post.description,
-    //     body: this.props.post.body
-    //   });
-    //}
+    if (this.props.post) {
+      this.setState({
+        title: this.props.post.title,
+        description: this.props.post.description,
+        body: this.props.post.body
+      });
+    }
   }
 
   // if there is a post obj, then edit, otherwise, create new
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.post
-      ? this.props.editPost(this.state, this.props.post.id)
+      ? this.props.editPost(this.state, this.props.id)
       : this.props.addPost(this.state);
     // The wiring to addPost isn't a function
     this.setState({ title: '', description: '', body: '' });

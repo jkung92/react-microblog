@@ -23,24 +23,41 @@ function rootReducer(state = INITIAL_STATE, action) {
     case ADD_POST: {
       //  create id, create newPost obj structure from payload
       let id = uuid();
-      var newPostObj = {};
-      newPostObj[id] = action.post;
-      console.log(`inside add post, checking newPostObj`, newPostObj);
-      // access post from action dispatch & add id
       return {
         ...state,
-        blogPosts: { ...state.blogPosts, newPostObj }
+        blogPosts: { ...state.blogPosts, [id]: action.post }
       };
     }
 
     case EDIT_POST: {
-      return state;
+      // find post by id, update [id] value to action.post
+      let newState = { ...state };
+      // Make a copy of state, with this copy, change the copy and return it
+      let newBlogPosts = { ...state.blogPosts };
+      newState.blogPosts = newBlogPosts;
+      newState.blogPosts[action.id] = action.post;
+      return newState;
     }
     case DELETE_POST: {
-      return state;
+      // find post by id, update [id] value to action.post
+      let newState = { ...state };
+      let newBlogPosts = { ...state.blogPosts };
+      newState.blogPosts = newBlogPosts;
+      delete newState.blogPosts[action.id];
+      return newState;
     }
     case ADD_COMMENT: {
-      return state;
+      let commentId = uuid();
+      let newState = { ...state };
+      // Make a copy of state, with this copy, change the copy and return it
+      let newBlogPosts = { ...state.blogPosts };
+      let newPost = { ...state.blogPosts.postId };
+      // Copy of state.blogPosts
+      // create a comments key inside of
+      newState.blogPosts = newBlogPosts;
+
+      newState.blogPosts[action.id] = action.post;
+      return newState;
     }
     case DELETE_COMMENT: {
       return state;

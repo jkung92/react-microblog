@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       // posts: [],
-      comments: []
+      // comments: []
     };
     // this.addPost = this.addPost.bind(this);
     this.editPost = this.editPost.bind(this);

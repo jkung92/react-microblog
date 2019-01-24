@@ -13,7 +13,8 @@ class CommentForm extends Component {
     evt.preventDefault();
     // take in this.props.id (post id)
     // call function on App to add new comment to array
-    this.props.addComment(this.state, this.props.post.id);
+    this.props.addComment(this.state);
+    // this.props.addComment(this.state, this.props.post.id);
     // take this.state.comment as the comment value
 
     this.setState({ comment: '' });

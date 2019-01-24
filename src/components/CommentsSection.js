@@ -4,12 +4,13 @@ import CommentForm from './CommentForm';
 
 class CommentsSection extends Component {
   render() {
+    console.log(`These are props inside CommentsSection`, this.props);
     return (
       <div>
         <h3>Comments: </h3>
-        {this.props.comments.map(c => (
+        {this.props.post.comments.map(c => (
           <Comment
-            comment={c}
+            comment={c.comment}
             key={c.commentId}
             deleteComment={this.props.deleteComment}
           />
