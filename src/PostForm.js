@@ -40,7 +40,7 @@ class PostForm extends Component {
   render() {
     return (
       <div>
-        <h3> New Post </h3>
+        <h3> {this.props.post ? 'Edit Post' : 'New Post'} </h3>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="title"> Title </label>

@@ -9,6 +9,8 @@ import {
 const INITIAL_STATE = { blogPosts: {}, blogComments: [] };
 
 function rootReducer(state = INITIAL_STATE, action) {
+  console.log('reducer ran; state & action:', state, action);
+
   switch (action.type) {
     case ADD_POST: {
       return state;
