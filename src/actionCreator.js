@@ -31,10 +31,11 @@ export function editPost(post, id) {
 }
 
 // Blog COMMENT actions
-export function addComment(post) {
+export function addComment(comment, postId) {
   return {
     type: ADD_COMMENT,
-    post
+    comment,
+    postId
   };
 }
 export function deleteComment(post) {

@@ -18,6 +18,7 @@ class CommentsSection extends Component {
 
         <CommentForm
           post={this.props.post}
+          postId={this.props.postId}
           addComment={this.props.addComment}
         />
       </div>

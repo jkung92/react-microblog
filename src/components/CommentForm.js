@@ -11,9 +11,10 @@ class CommentForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    console.log(`THIS IS THE POST PROP IN HANDLE SUBMIT`, this.props.post);
     // take in this.props.id (post id)
     // call function on App to add new comment to array
-    this.props.addComment(this.state);
+    this.props.addComment(this.state, this.props.postId);
     // this.props.addComment(this.state, this.props.post.id);
     // take this.state.comment as the comment value
 

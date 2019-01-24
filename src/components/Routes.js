@@ -40,7 +40,7 @@ class Routes extends Component {
                 // deleteComment={deleteComment}
                 {...props}
                 // posts={posts}
-                comments={comments}
+                // comments={comments}
               />
             )}
           />

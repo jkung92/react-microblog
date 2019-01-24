@@ -7,7 +7,11 @@ class CommentsSectionContainer extends Component {
   render() {
     return (
       <div>
-        <CommentsSection post={this.props.post} {...this.props} />
+        <CommentsSection
+          postId={this.props.id}
+          post={this.props.post}
+          {...this.props}
+        />
       </div>
     );
   }
@@ -21,7 +25,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addComment: comment => dispatch(addComment(comment))
+    addComment: (comment, postId) => dispatch(addComment(comment, postId))
   };
 }
 

@@ -21,7 +21,6 @@ class PostDetail extends Component {
   render() {
     // get the id of the and find the post in the posts array
     const id = this.props.match.params.postId;
-    console.log(`Inside PostDetail`, this.props);
     let post = this.props.blogPosts[id];
 
     // let post = this.props.blogPosts.find(p => p.id === id);
@@ -29,7 +28,6 @@ class PostDetail extends Component {
 
     // can destructure to clean up this.props
 
-    console.log(`inside postdetail -----`, this.props);
     return (
       <div>
         {this.state.editView ? (
@@ -60,6 +58,7 @@ class PostDetail extends Component {
         )}
         <CommentSectionContainer
           post={post}
+          id={id}
           addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
         />
