@@ -7,6 +7,7 @@ import {
   EDIT_POST
 } from './actionTypes';
 
+// Blog post actions
 export function addPost(post) {
   return {
     type: ADD_POST,
@@ -14,6 +15,21 @@ export function addPost(post) {
   };
 }
 
+export function deletePost(post) {
+  return {
+    type: DELETE_POST,
+    payload: post
+  };
+}
+
+export function editPost(post) {
+  return {
+    type: EDIT_POST,
+    payload: post
+  };
+}
+
+// Blog COMMENT actions
 export function addComment(post) {
   return {
     type: ADD_COMMENT,
@@ -23,18 +39,6 @@ export function addComment(post) {
 export function deleteComment(post) {
   return {
     type: DELETE_COMMENT,
-    payload: post
-  };
-}
-export function deletePost(post) {
-  return {
-    type: DELETE_POST,
-    payload: post
-  };
-}
-export function editPost(post) {
-  return {
-    type: EDIT_POST,
     payload: post
   };
 }
