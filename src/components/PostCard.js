@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 class PostCard extends Component {
   render() {
-    const { id, body, title, description } = this.props;
+    const { id, title, description } = this.props;
     return (
       <div>
-        <Link to={`/${id}`} body={body}>
+        <Link to={`/${id}`}>
           <div className="card m-3 bg-light" style={{ width: '18rem' }}>
             <div className="card-body">
               <h5 className="card-title">{title}</h5>

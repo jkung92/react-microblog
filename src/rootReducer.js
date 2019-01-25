@@ -3,14 +3,15 @@ import {
   ADD_POST,
   DELETE_COMMENT,
   DELETE_POST,
-  EDIT_POST
+  EDIT_POST,
+  LOAD_POSTS
 } from './actionTypes';
 import uuid from 'uuid';
 
 const INITIAL_STATE = { blogPosts: {} };
 // { blogPosts: {
 //    postId:
-//     { title: '', description: '', body: '',
+//     { title: '', description: '', votes: '', id: '',
 //       comments:
 //        [{commentId: '', text: ''}]
 //     }
@@ -26,6 +27,11 @@ function rootReducer(state = INITIAL_STATE, action) {
   console.log('reducer ran; state & action:', state, action);
 
   switch (action.type) {
+    case LOAD_POSTS: {
+      console.log();
+      return { ...state, blogPosts: action.blogPosts };
+    }
+
     case ADD_POST: {
       //  create id, create newPost obj structure from payload
       let id = uuid();

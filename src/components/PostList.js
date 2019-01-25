@@ -11,7 +11,7 @@ class PostList extends Component {
             id={id}
             title={blogPosts[id].title}
             description={blogPosts[id].description}
-            body={blogPosts[id].body}
+            // body={blogPosts[id].body}
             key={id}
           />
         ))}

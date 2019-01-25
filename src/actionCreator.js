@@ -1,10 +1,14 @@
+import axios from 'axios';
 import {
   ADD_COMMENT,
   ADD_POST,
   DELETE_COMMENT,
   DELETE_POST,
-  EDIT_POST
+  EDIT_POST,
+  LOAD_POSTS
 } from './actionTypes';
+
+const BASE_URL = 'http://localhost:5000/api';
 
 // Blog post actions
 export function addPost(post) {
@@ -27,6 +31,24 @@ export function editPost(post, id) {
     post,
     id
   };
+}
+
+// utilizing THUNK for API request to get POSTS
+export function getPostsFromApi() {
+  return async function(dispatch) {
+    // result.data is an array that needs to be converted into an object of post ids with post objects
+    const result = await axios.get(`${BASE_URL}/posts`);
+    const blogPosts = result.data.reduce((obj, currPost) => {
+      obj[currPost.id] = currPost;
+      return obj;
+    }, {});
+    console.log('restructured API results:', blogPosts);
+    dispatch(gotPosts(blogPosts));
+  };
+}
+
+function gotPosts(blogPosts) {
+  return { type: LOAD_POSTS, blogPosts };
 }
 
 // Blog COMMENT actions
