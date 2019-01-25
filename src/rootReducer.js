@@ -4,11 +4,12 @@ import {
   DELETE_COMMENT,
   DELETE_POST,
   EDIT_POST,
-  LOAD_POSTS
+  LOAD_POSTS,
+  LOAD_POST_DETAILS
 } from './actionTypes';
 import uuid from 'uuid';
 
-const INITIAL_STATE = { blogPosts: {} };
+const INITIAL_STATE = { blogPosts: {}, comments: [], currPost: {} };
 // { blogPosts: {
 //    postId:
 //     { title: '', description: '', votes: '', id: '',
@@ -28,8 +29,11 @@ function rootReducer(state = INITIAL_STATE, action) {
 
   switch (action.type) {
     case LOAD_POSTS: {
-      console.log();
       return { ...state, blogPosts: action.blogPosts };
+    }
+
+    case LOAD_POST_DETAILS: {
+      return { ...state, currPost: action.currPost };
     }
 
     case ADD_POST: {
@@ -58,24 +62,25 @@ function rootReducer(state = INITIAL_STATE, action) {
       delete newState.blogPosts[action.id];
       return newState;
     }
-    case ADD_COMMENT: {
-      let commentId = uuid();
-      // MODIFIED comment structure:
-      let newComment = { commentId: commentId, text: action.comment.comment };
-      const copy = deepCopy(state);
-      copy.blogPosts[action.postId].comments.push(newComment);
-      return copy;
-    }
-    case DELETE_COMMENT: {
-      let copy = deepCopy(state);
-      let targetComments = copy.blogPosts[action.postId].comments.filter(
-        function(c) {
-          return c.commentId !== action.commentId;
-        }
-      );
-      copy.blogPosts[action.postId].comments = targetComments;
-      return copy;
-    }
+
+    // case ADD_COMMENT: {
+    //   let commentId = uuid();
+    //   // MODIFIED comment structure:
+    //   let newComment = { commentId: commentId, text: action.comment.comment };
+    //   const copy = deepCopy(state);
+    //   copy.blogPosts[action.postId].comments.push(newComment);
+    //   return copy;
+    // }
+    // case DELETE_COMMENT: {
+    //   let copy = deepCopy(state);
+    //   let targetComments = copy.blogPosts[action.postId].comments.filter(
+    //     function(c) {
+    //       return c.commentId !== action.commentId;
+    //     }
+    //   );
+    //   copy.blogPosts[action.postId].comments = targetComments;
+    //   return copy;
+    // }
     default:
       return state;
   }
