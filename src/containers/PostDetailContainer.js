@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import PostDetail from '../components/PostDetail';
 import { connect } from 'react-redux';
-import { editPost, deletePost, getPostDetailsFromApi } from '../actionCreator';
+import {
+  editPost,
+  deletePostFromApi,
+  getPostDetailsFromApi,
+  deletePost
+} from '../actionCreator';
 
 class PostDetailContainer extends Component {
   componentDidMount() {
     this.props.getPostDetailsFromApi(this.props.match.params.postId);
+    // this.props.deletePostFromApi(this.props.match.params.postId);
   }
+
+  // updates/deletes a post from database
 
   render() {
     return (
@@ -30,8 +38,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     editPost: (post, id) => dispatch(editPost(post, id)),
-    deletePost: id => dispatch(deletePost(id)),
-    getPostDetailsFromApi: id => dispatch(getPostDetailsFromApi(id))
+    getPostDetailsFromApi: id => dispatch(getPostDetailsFromApi(id)),
+    deletePostFromApi: id => dispatch(deletePostFromApi(id))
   };
 }
 

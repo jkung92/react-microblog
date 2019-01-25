@@ -19,12 +19,12 @@ export function addPost(post) {
   };
 }
 
-export function deletePost(id) {
-  return {
-    type: DELETE_POST,
-    id
-  };
-}
+// export function deletePost(id) {
+//   return {
+//     type: DELETE_POST,
+//     id
+//   };
+// }
 
 export function editPost(post, id) {
   return {
@@ -62,6 +62,20 @@ export function getPostDetailsFromApi(postId) {
 
 function gotPostDetails(currPost) {
   return { type: LOAD_POST_DETAILS, currPost };
+}
+
+// utilizing THUNK for API request to delete POSTS
+export function deletePostFromApi(postId) {
+  console.log(`INSIDE deletePostFromAPI...`, `postID:`, postId);
+  return async function(dispatch) {
+    console.log(`Prior to await axios.delete!`);
+    await axios.delete(`${BASE_URL}/posts/${postId}`);
+    dispatch(deletePost(postId));
+  };
+}
+
+function deletePost(postId) {
+  return { type: DELETE_POST, postId };
 }
 
 // Blog COMMENT actions

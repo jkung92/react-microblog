@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PostForm from './PostForm';
 import CommentSectionContainer from '../containers/CommentSectionContainer';
+import axios from 'axios';
+const BASE_URL = 'http://localhost:5000/api';
 
 class PostDetail extends Component {
   constructor(props) {
@@ -13,9 +15,10 @@ class PostDetail extends Component {
     this.setState({ editView: true });
   };
 
-  remove = () => {
+  remove = async () => {
     const id = this.props.match.params.postId;
-    this.props.deletePost(id);
+    await this.props.deletePostFromApi(id);
+    this.props.history.push('/');
   };
 
   render() {

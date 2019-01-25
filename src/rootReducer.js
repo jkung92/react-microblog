@@ -56,6 +56,7 @@ function rootReducer(state = INITIAL_STATE, action) {
     }
     case DELETE_POST: {
       // find post by id, update [id] value to action.post
+      // for further study we can update the state so we don't have to make another api req
       let newState = { ...state };
       let newBlogPosts = { ...state.blogPosts };
       newState.blogPosts = newBlogPosts;
