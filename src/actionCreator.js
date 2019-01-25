@@ -3,7 +3,6 @@ import {
   ADD_POST,
   DELETE_COMMENT,
   DELETE_POST,
-  EDIT_COMMENT,
   EDIT_POST
 } from './actionTypes';
 

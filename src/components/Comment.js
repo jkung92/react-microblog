@@ -6,9 +6,10 @@ class Comment extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="media">
-        <div className="media-body">{this.props.comment.comment}</div>
+        <div className="media-body">{this.props.comment}</div>
         <i
           className="far fa-trash-alt float-right ml-3 align-self-center"
           style={{ color: 'red' }}

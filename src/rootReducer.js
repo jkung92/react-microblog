@@ -54,7 +54,7 @@ function rootReducer(state = INITIAL_STATE, action) {
     }
     case ADD_COMMENT: {
       let commentId = uuid();
-      let newComment = { [commentId]: action.comment };
+      let newComment = { [commentId]: action.comment.comment };
       const copy = deepCopy(state);
       copy.blogPosts[action.postId].comments.push(newComment);
       console.log('copy in add comment:', copy);

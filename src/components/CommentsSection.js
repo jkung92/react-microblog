@@ -5,13 +5,15 @@ import CommentForm from './CommentForm';
 class CommentsSection extends Component {
   render() {
     console.log(`These are props inside CommentsSection`, this.props);
+    const comments = this.props.blogPosts[this.props.postId].comments;
     return (
       <div>
         <h3>Comments: </h3>
-        {this.props.post.comments.map(c => (
+        {comments.map(c => (
           <Comment
             comment={c.comment}
-            key={c.commentId}
+            key={Object.keys(c)[0]}
+            commentId={Object.keys(c)[0]}
             deleteComment={this.props.deleteComment}
           />
         ))}
