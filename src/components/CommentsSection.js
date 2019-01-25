@@ -5,7 +5,7 @@ import CommentForm from './CommentForm';
 class CommentsSection extends Component {
   render() {
     const comments = this.props.blogPosts[this.props.postId].comments;
-    console.log(`These are comment inside CommentsSection`, comments);
+
     return (
       <div>
         <h3>Comments: </h3>
@@ -14,6 +14,7 @@ class CommentsSection extends Component {
             comment={c.text}
             key={c.commentId}
             commentId={c.commentId}
+            postId={this.props.postId}
             deleteComment={this.props.deleteComment}
           />
         ))}

@@ -20,8 +20,10 @@ class PostDetail extends Component {
 
   render() {
     // get the id of the and find the post in the posts array
-    const id = this.props.match.params.postId;
-    let post = this.props.blogPosts[id];
+    // console.log('props inside post details:', this.props);
+    const postId = this.props.match.params.postId;
+    let post = this.props.blogPosts[postId];
+    console.log(` POST: `, post, `postId`, postId);
 
     // let post = this.props.blogPosts.find(p => p.id === id);
     if (!post) return <Redirect to="/" />;
@@ -33,7 +35,7 @@ class PostDetail extends Component {
         {this.state.editView ? (
           <PostForm
             post={post}
-            id={id}
+            postId={postId}
             // addPost={this.props.addPost}
             editPost={this.props.editPost}
           />
@@ -58,7 +60,7 @@ class PostDetail extends Component {
         )}
         <CommentSectionContainer
           post={post}
-          id={id}
+          postId={postId}
           addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
         />

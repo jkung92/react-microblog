@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 
 class Comment extends Component {
   remove = () => {
-    this.props.deleteComment(this.props.comment.commentId);
+    this.props.deleteComment(this.props.postId, this.props.commentId);
   };
 
   render() {
-    console.log(this.props);
+    console.log(
+      `Inside Comment checking commentId for comm-------`,
+      this.props.commentId
+    );
     return (
       <div className="media">
         <div className="media-body">{this.props.comment}</div>

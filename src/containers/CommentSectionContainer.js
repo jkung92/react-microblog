@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CommentsSection from '../components/CommentsSection';
 import { connect } from 'react-redux';
-import { addComment } from '../actionCreator';
+import { addComment, deleteComment } from '../actionCreator';
 
 class CommentsSectionContainer extends Component {
   render() {
@@ -25,7 +25,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addComment: (comment, postId) => dispatch(addComment(comment, postId))
+    addComment: (comment, postId) => dispatch(addComment(comment, postId)),
+    deleteComment: (postId, commentId) =>
+      dispatch(deleteComment(postId, commentId))
   };
 }
 
