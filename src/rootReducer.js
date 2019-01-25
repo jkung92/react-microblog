@@ -12,7 +12,7 @@ const INITIAL_STATE = { blogPosts: {} };
 //    postId:
 //     { title: '', description: '', body: '',
 //       comments:
-//        {commentId: comment}
+//        [{commentId: '', text: ''}]
 //     }
 //  }
 
@@ -55,14 +55,20 @@ function rootReducer(state = INITIAL_STATE, action) {
     case ADD_COMMENT: {
       let commentId = uuid();
       // MODIFIED comment structure:
-      let newComment = { commentId: [commentId], text: action.comment.comment };
+      let newComment = { commentId: commentId, text: action.comment.comment };
       const copy = deepCopy(state);
       copy.blogPosts[action.postId].comments.push(newComment);
-      console.log('copy in add comment:', copy);
       return copy;
     }
     case DELETE_COMMENT: {
-      return state;
+      let copy = deepCopy(state);
+      let targetComments = copy.blogPosts[action.postId].comments.filter(
+        function(c) {
+          return c.commentId !== action.commentId;
+        }
+      );
+      copy.blogPosts[action.postId].comments = targetComments;
+      return copy;
     }
     default:
       return state;
