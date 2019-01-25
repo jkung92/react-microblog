@@ -4,7 +4,7 @@ import CommentForm from './CommentForm';
 
 class CommentsSection extends Component {
   render() {
-    const comments = this.props.blogPosts[this.props.postId].comments;
+    const comments = this.props.comments;
 
     return (
       <div>

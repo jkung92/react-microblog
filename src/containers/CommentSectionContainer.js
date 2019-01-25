@@ -19,7 +19,8 @@ class CommentsSectionContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    blogPosts: state.blogPosts
+    blogPosts: state.blogPosts,
+    comments: state.comments
   };
 }
 
