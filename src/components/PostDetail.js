@@ -22,7 +22,8 @@ class PostDetail extends Component {
     // get the id of the and find the post in the posts array
     // console.log('props inside post details:', this.props);
     const postId = this.props.match.params.postId;
-    let post = this.props.blogPosts[postId];
+    // let post = this.props.blogPosts[postId];
+    let post = this.props.currPost;
     console.log(` POST: `, post, `postId`, postId);
 
     // let post = this.props.blogPosts.find(p => p.id === id);
