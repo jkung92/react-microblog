@@ -5,7 +5,8 @@ import {
   DELETE_COMMENT,
   DELETE_POST,
   EDIT_POST,
-  LOAD_POSTS
+  LOAD_POSTS,
+  LOAD_POST_DETAILS
 } from './actionTypes';
 
 const BASE_URL = 'http://localhost:5000/api';
@@ -42,13 +43,25 @@ export function getPostsFromApi() {
       obj[currPost.id] = currPost;
       return obj;
     }, {});
-    console.log('restructured API results:', blogPosts);
     dispatch(gotPosts(blogPosts));
   };
 }
 
 function gotPosts(blogPosts) {
   return { type: LOAD_POSTS, blogPosts };
+}
+
+// utilizing THUNK for API request to get POSTS
+export function getPostDetailsFromApi(postId) {
+  return async function(dispatch) {
+    // result.data is an array that needs to be converted into an object of post ids with post objects
+    const result = await axios.get(`${BASE_URL}/posts/${postId}`);
+    dispatch(gotPostDetails(result.data));
+  };
+}
+
+function gotPostDetails(currPost) {
+  return { type: LOAD_POST_DETAILS, currPost };
 }
 
 // Blog COMMENT actions
