@@ -3,5 +3,5 @@
 This is a blogging website made with react/redux/javascript.
 
 ### Setup
-npm i
-npm start
+$ npm i
+$ npm start
